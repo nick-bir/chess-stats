@@ -1,0 +1,44 @@
+databaseChangeLog:
+  - changeSet:
+      id: initial-schema
+      author: nikolai-biriukov
+      changes:
+        - createTable:
+            tableName: games
+            columns:
+              - column:
+                  name: id
+                  type: BIGINT
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: event
+                  type: varchar(50)
+              - column:
+                  name: date
+                  type: datetime
+              - column:
+                  name: white
+                  type: varchar(50)
+              - column:
+                  name: black
+                  type: varchar(50)
+              - column:
+                  name: result
+                  type: int(1)
+              - column:
+                  name: white_elo
+                  type: int(5)
+              - column:
+                  name: black_elo
+                  type: int(5)
+              - column:
+                  name: eco
+                  type: varchar(10)
+              - column:
+                  name: pgn
+                  type: text
+                  constraints:
+                    nullable: false
