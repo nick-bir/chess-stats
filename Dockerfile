@@ -1,0 +1,13 @@
+FROM openjdk:14 as build
+COPY gradlew .
+COPY gradle gradle
+COPY settings.gradle.kts .
+COPY build.gradle.kts .
+COPY src src
+
+RUN ./gradlew build
+
+FROM openjdk:14
+ARG JAR_FILE=build/libs/*.jar
+COPY ${JAR_FILE} app.jar
+ENTRYPOINT ["java", "-jar", "/app.jar"]

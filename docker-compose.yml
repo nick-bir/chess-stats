@@ -1,0 +1,17 @@
+version: "2"
+services:
+  mysql:
+    image: mysql:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: docker_root
+      MYSQL_DATABASE: chessstats
+      MYSQL_PASSWORD: chessstats
+      MYSQL_USER: chessstats
+    ports:
+      - "3307:3306"
+  api:
+    build: .
+    ports:
+      - "8080:8080"
+    depends_on:
+      - mysql
