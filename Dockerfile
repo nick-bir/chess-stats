@@ -7,7 +7,7 @@ COPY src src
 
 RUN ./gradlew build
 
-FROM openjdk:14
+FROM openjdk:14 as api
 ARG JAR_FILE=build/libs/*.jar
-COPY ${JAR_FILE} app.jar
+COPY --from=build ${JAR_FILE} app.jar
 ENTRYPOINT ["java", "-jar", "/app.jar"]
