@@ -15,3 +15,4 @@ services:
       - "8080:8080"
     depends_on:
       - mysql
+    entrypoint: sh -c "/wait-for-port.sh mysql 3306 && sleep 3 && java -jar /app.jar"
