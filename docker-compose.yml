@@ -1,5 +1,6 @@
 version: "2"
 services:
+
   mysql:
     image: mysql:latest
     environment:
@@ -9,10 +10,23 @@ services:
       MYSQL_USER: chessstats
     ports:
       - "3307:3306"
-  api:
-    build: ./server
-    ports:
-      - "8080:8080"
+
+  api_server:
     depends_on:
       - mysql
+    build: ./server
+    ports:
+      - "8081:8080"
     entrypoint: sh -c "/wait-for-port.sh mysql 3306 && sleep 3 && java -jar /app.jar"
+  
+  client:
+    # depends_on:
+      # - api_server
+    build: ./client
+    volumes: 
+      - "./client:/chess-stats-client"
+    stdin_open: true
+    tty: true
+    ports:
+      - 8082:8082 # для HMR порты должны совпадать
+    entrypoint: ["quasar", "dev"]
