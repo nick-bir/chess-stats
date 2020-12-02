@@ -32,3 +32,9 @@ out/
 
 ### VS Code ###
 .vscode/
+
+
+### Node ###
+**/node_modules
+**/.quasar
+**/.vscode
