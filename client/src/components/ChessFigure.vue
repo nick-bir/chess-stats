@@ -24,29 +24,29 @@ export default {
     background-image: url('ChessFigure__Sprite.svg')
     background-size: 600% 200%
 
-    &_figure_kl
+    &_figure_K
       background-position: 0 0
-    &_figure_ql
+    &_figure_Q
       background-position: 20% 0
-    &_figure_rl
+    &_figure_R
       background-position: 40% 0
-    &_figure_bl
+    &_figure_B
       background-position: 60% 0
-    &_figure_nl
+    &_figure_N
       background-position: 80% 0
-    &_figure_pl
+    &_figure_P
       background-position: 100% 0
 
-    &_figure_kd
+    &_figure_k
       background-position: 0 100%
-    &_figure_qd
+    &_figure_q
       background-position: 20% 100%
-    &_figure_rd
+    &_figure_r
       background-position: 40% 100%
-    &_figure_bd
+    &_figure_b
       background-position: 60% 100%
-    &_figure_nd
+    &_figure_n
       background-position: 80% 100%
-    &_figure_pd
+    &_figure_p
       background-position: 100% 100%
 </style>

@@ -9,9 +9,8 @@
             .chess-board__tiles
                 .chess-board__row(v-for="(d, r) in '87654321'")
                     .chess-board__tile(v-for="(l, c) in 'abcdedgh'" :class="'chess-board__tile_side_' + ((r+c)%2 ? 'dark' : 'light')")
-                        .chess-board__tile-content
-                            //- |{{r}}:{{c}}
-                            ChessFigure(:figure="boardSetup[l+d]" v-if="boardSetup[l+d]")
+                        .chess-board__tile-content  
+                            ChessFigure(:figure="getFigure(l, d)" v-if="getFigure(l, d)")
                 
             .chess-board__digits
                 .chess-board__digit(v-for="l in '87654321'") {{ l }}
@@ -30,45 +29,62 @@ export default {
     },
     data() {
         return {
-            boardSetup: {
-                'a1': 'rl',
-                'b1': 'nl',
-                'c1': 'bl',
-                'd1': 'ql',
-                'e1': 'kl',
-                'f1': 'bl',
-                'g1': 'nl',
-                'h1': 'rl',
-
-                'a2': 'pl',
-                'b2': 'pl',
-                'c2': 'pl',
-                'd2': 'pl',
-                'e2': 'pl',
-                'f2': 'pl',
-                'g2': 'pl',
-                'h2': 'pl',
-
+            // boardSetup: {
+            //     'a1': 'R',
+            //     'b1': 'N',
+            //     'c1': 'B',
+            //     'd1': 'Q',
+            //     'e1': 'K',
+            //     'f1': 'B',
+            //     'g1': 'N',
+            //     'h1': 'R',
+            //     'a2': 'P',
+            //     'b2': 'P',
+            //     'c2': 'P',
+            //     'd2': 'P',
+            //     'e2': 'P',
+            //     'f2': 'P',
+            //     'g2': 'P',
+            //     'h2': 'P',
                 
-                'b8': 'nd',
-                'a8': 'rd',
-                'c8': 'bd',
-                'd8': 'qd',
-                'e8': 'kd',
-                'f8': 'bd',
-                'g8': 'nd',
-                'h8': 'rd',
-                'a7': 'pd',
-                'b7': 'pd',
-                'c7': 'pd',
-                'd7': 'pd',
-                'e7': 'pd',
-                'f7': 'pd',
-                'g7': 'pd',
-                'h7': 'pd',
-            }
+            //     'b8': 'n',
+            //     'a8': 'r',
+            //     'c8': 'b',
+            //     'd8': 'q',
+            //     'e8': 'k',
+            //     'f8': 'b',
+            //     'g8': 'n',
+            //     'h8': 'r',
+            //     'a7': 'p',
+            //     'b7': 'p',
+            //     'c7': 'p',
+            //     'd7': 'p',
+            //     'e7': 'p',
+            //     'f7': 'p',
+            //     'g7': 'p',
+            //     'h7': 'p',
+            // },
+            board: [
+            //  ['a','b','c','d','e','f','g','h']
+                ['r','n','b','q','k','b','n','r'], // 8
+                ['p','p','p','p','p','p','p','p'], // 7
+                [' ',' ',' ',' ',' ',' ',' ',' '], // 6
+                [' ',' ',' ',' ',' ',' ',' ',' '], // 5
+                [' ',' ',' ',' ',' ',' ',' ',' '], // 4
+                [' ',' ',' ',' ',' ',' ',' ',' '], // 3
+                ['P','P','P','P','P','P','P','P'], // 2
+                ['R','N','B','Q','K','B','N','R'], // 1
+            ]
         }
     },
+
+    methods: {
+        getFigure(l, d) {
+            let f = this.board[d-1][l.charCodeAt(0) - 'a'.charCodeAt(0)];
+            return f === ' ' ? '' : f;
+        }
+    },
+
     components: {
         ChessFigure
     },
