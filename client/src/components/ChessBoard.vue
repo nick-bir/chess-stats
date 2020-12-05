@@ -111,7 +111,7 @@ export default {
         responsive-square()
         width: 50%
         margin: auto
-        border: 1px solid silver
+        border: 1px solid #eaeaea
 
         &__content
             display: flex
@@ -130,10 +130,6 @@ export default {
 
         &__letter
             flex-grow: 1
-            border: 0px solid silver
-            border-right-width: 1px
-            &:first-child
-                border-left-width: 1px
 
         &__digits
             width: 5%
@@ -143,14 +139,14 @@ export default {
 
         &__digit
             flex-grow: 1
-            border: 0px solid silver
-            border-bottom-width: 1px
-            &:first-child
-                border-top-width: 1px
+            display: flex
+            justify-content: center
+            align-items: center
 
         &__tiles
             width: 90%
             height: 90%
+            border: 1px solid #eaeaea
 
         &__row
             box-sizing: border-box;
@@ -165,6 +161,8 @@ export default {
             &:hover
                 border-color: red
             
+            &_side_light
+                background: #fff;
             &_side_dark
                 background: #eee;
 
@@ -172,7 +170,5 @@ export default {
             display: flex
             justify-content: center
             align-items: center
-
-
 
 </style>
