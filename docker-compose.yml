@@ -8,6 +8,8 @@ services:
       MYSQL_DATABASE: chessstats
       MYSQL_PASSWORD: chessstats
       MYSQL_USER: chessstats
+    volumes: 
+      - mysql_data:/var/lib/mysql
     ports:
       - "3307:3306"
 
@@ -30,3 +32,6 @@ services:
     ports:
       - 8082:8082 # для HMR порты должны совпадать
     entrypoint: ["quasar", "dev"]
+  
+volumes:
+  mysql_data:
