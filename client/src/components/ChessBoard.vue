@@ -2,9 +2,9 @@
     div.chess-board
         div.chess-board__content
             .chess-board__row(v-for="r in 8")
-                .chess-board__tile(v-for="c in 8")
+                .chess-board__tile(v-for="c in 8" :class="'chess-board__tile_side_' + ((r+c)%2 ? 'dark' : 'light')")
                     .chess-board__tile-content
-                        |{{r}}:{{c}}
+                        //- |{{r}}:{{c}}
                         ChessFigure
                 
 
@@ -59,6 +59,10 @@ export default {
             width: 12.5%
             &:hover
                 border-color: red
+            
+            &_side_dark
+                background: #eee;
+
         &__tile-content
             display: flex
             justify-content: center

@@ -1,11 +1,11 @@
 <template>
-  <svg class="inline-svg-icon">
-    <use :xlink:href="svg+'#chess-figure__klt'"></use>
+  <svg class="ChessFigure">
+    <use :xlink:href="svg+'#chess-figure__icon-klt'"></use>
   </svg>
 </template>
 
 <script>
-require('./ChessFigure__Sprite.svg');
+
 export default {
   data(){
     return {
@@ -15,3 +15,10 @@ export default {
   
 }
 </script>
+
+<style lang="stylus">
+  .ChessFigure
+    width: 100%
+    height: 100%
+
+</style>
