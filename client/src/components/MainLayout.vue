@@ -1,6 +1,6 @@
 <template>
     <main class="main-layout">
-        main
+        main layout
         <ChessBoard/>
     </main>
 </template>
