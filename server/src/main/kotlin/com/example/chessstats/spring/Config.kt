@@ -15,7 +15,10 @@ class Config(
     private val log = LoggerFactory.getLogger(this.javaClass)
 
     override fun afterPropertiesSet() {
-        if (gameRepository.count() > 0) return
+        if (gameRepository.count() > 0) {
+            log.info("DB initialization skipped")
+            return
+        }
         log.info("DB initialization started")
         val resourceResolver = PathMatchingResourcePatternResolver(this.javaClass.classLoader)
         resourceResolver.getResources("classpath*:*.pgn").forEach { res ->

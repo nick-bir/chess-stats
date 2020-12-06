@@ -8,7 +8,8 @@ import org.springframework.stereotype.Controller
 import org.springframework.web.bind.annotation.*
 import javax.persistence.EntityManager
 
-@Controller
+@CrossOrigin
+@RestController
 @RequestMapping("/api/v1/games")
 class GameController(
         val gameRepository: GameRepository,
@@ -16,7 +17,6 @@ class GameController(
 ) {
 
     @GetMapping("/stats")
-    @ResponseBody
     fun stats(
             @RequestParam(required = false) filter: String?
     ): Stats {
