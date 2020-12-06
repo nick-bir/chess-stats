@@ -5,10 +5,12 @@
 </template>
 
 <script>
+import store from './store/Store.js';
 import MainLayout from './components/MainLayout.vue'
 
 export default {
   name: 'App',
+  store,
   components: {
     MainLayout
   }
