@@ -1,6 +1,6 @@
-FROM node:15-alpine
+FROM node:14-alpine
 WORKDIR /chess-stats-client
 COPY package.json .
-RUN yarn install
+RUN yarn
 COPY . .
 ENTRYPOINT yarn serve
