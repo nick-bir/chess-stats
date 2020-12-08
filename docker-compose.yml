@@ -26,9 +26,10 @@ services:
       # - api_server
     build: ./client
     volumes: 
-      - "./client:/chess-stats-client"
+      - "./client:/chess-stats-client" # for HMR
+      - "/chess-stats-client/node_modules" # save container node_modules visibility
     ports:
-      - 8082:8082 # для HMR порты должны совпадать
+      - 8082:8082 # HMR seems not working when ports are not the same
   
 volumes:
   mysql_data:
