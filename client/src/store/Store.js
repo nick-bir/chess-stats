@@ -1,18 +1,19 @@
-
-import Vue from 'vue';
-import Vuex from 'vuex';
+import Vue from "vue";
+import Vuex from "vuex";
+import actions from './actions';
 
 Vue.use(Vuex);
 
-const store = {
-  state: {
-    percentageByPiece: {},
-  },
-  mutations: {
-    increment (state) {
-      state.count++;
-    }
-  }
+const _store = {
+    state: {
+        percentageByPiece: {}
+    },
+    mutations: {
+        increment(state) {
+            state.count++;
+        }
+    },
+    actions
 };
 
-module.export = new Vuex.Store(store);
+export const store = new Vuex.Store(_store);
