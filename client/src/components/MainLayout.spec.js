@@ -5,7 +5,7 @@ describe('App.vue', () => {
   it('renders chess board', () => {
     const wrapper = shallowMount(MainLayout, {
       propsData: {  }
-    })
+    });
     expect(wrapper.find('.chess-board').exists());
   })
 })
