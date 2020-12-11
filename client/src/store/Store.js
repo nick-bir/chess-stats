@@ -1,18 +1,20 @@
-import Vue from "vue";
-import Vuex from "vuex";
+import Vue from 'vue';
+import Vuex from 'vuex';
 import actions from './actions';
+import mutations from './mutations';
 
 Vue.use(Vuex);
 
 const _store = {
     state: {
-        percentageByPiece: {}
+        stats: {}
     },
-    mutations: {
-        increment(state) {
-            state.count++;
+    getters: {
+        stats(state) {
+            return state.stats;
         }
     },
+    mutations,
     actions
 };
 

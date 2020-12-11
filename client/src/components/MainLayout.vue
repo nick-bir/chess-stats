@@ -1,7 +1,7 @@
 <template>
     <main class="main-layout">
         main layout
-        <ChessBoard/>
+        <ChessBoard :stats="stats"/>
     </main>
 </template>
 
@@ -10,6 +10,13 @@ import ChessBoard from './ChessBoard.vue';
 
 export default {
     name: 'MainLayout',
+
+    computed: {
+        stats() {
+            return this.$store?.getters.stats;
+        }
+    },
+
     components: {
         ChessBoard
     }
