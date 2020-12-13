@@ -1,22 +1,22 @@
 <template lang="pug">
-    div.chess-board
-        div.chess-board__content
-            .chess-board__letters
-                .chess-board__letter(v-for="l in 'abcdefgh'") {{ l }}
-            .chess-board__digits
-                .chess-board__digit(v-for="l in '87654321'") {{ l }}
+    div.ChessBoard
+        div.ChessBoard__content
+            .ChessBoard__letters
+                .ChessBoard__letter(v-for="l in 'abcdefgh'") {{ l }}
+            .ChessBoard__digits
+                .ChessBoard__digit(v-for="l in '87654321'") {{ l }}
             
-            .chess-board__tiles
-                .chess-board__row(v-for="(d, r) in '87654321'")
-                    .chess-board__tile(v-for="(l, c) in 'abcdefgh'" :class="'chess-board__tile_side_' + ((r+c)%2 ? 'dark' : 'light')")
-                        .chess-board__tile-content  
+            .ChessBoard__tiles
+                .ChessBoard__row(v-for="(d, r) in '87654321'")
+                    .ChessBoard__tile(v-for="(l, c) in 'abcdefgh'" :class="'ChessBoard__tile_side_' + ((r+c)%2 ? 'dark' : 'light')")
+                        .ChessBoard__tile-content  
                             //- ChessFigure(:figure="getFigure(l, d)" v-if="getFigure(l, d)")
                             StatsTile(:percentage="getPercentage(l, d)" v-if="getPercentage(l, d)")
                 
-            .chess-board__digits
-                .chess-board__digit(v-for="l in '87654321'") {{ l }}
-            .chess-board__letters
-                .chess-board__letter(v-for="l in 'abcdefgh'") {{ l }}
+            .ChessBoard__digits
+                .ChessBoard__digit(v-for="l in '87654321'") {{ l }}
+            .ChessBoard__letters
+                .ChessBoard__letter(v-for="l in 'abcdefgh'") {{ l }}
 
     </div>
 </template>
@@ -90,10 +90,9 @@ export default {
             width: 100%
             height: 100%
     
-    .chess-board
+    .ChessBoard
         responsive-square()
-        width: 50%
-        margin: auto
+        min-width: 300px
         border: 1px solid #eaeaea
 
         &__content
@@ -147,7 +146,8 @@ export default {
             &_side_light
                 background: #fff;
             &_side_dark
-                background: #eee;
+                // background: #eee;
+                background: #edebeb;
 
         &__tile-content
             display: flex

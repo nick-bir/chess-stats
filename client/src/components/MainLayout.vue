@@ -1,12 +1,13 @@
 <template>
-    <main class="main-layout">
-        main layout
+    <main class="MainLayout">
         <ChessBoard :stats="stats"/>
+        <Filters filters="filters" />
     </main>
 </template>
 
 <script>
 import ChessBoard from './ChessBoard.vue';
+import Filters from './Filters.vue';
 
 export default {
     name: 'MainLayout',
@@ -18,12 +19,22 @@ export default {
     },
 
     components: {
-        ChessBoard
+        ChessBoard,
+        Filters
     }
 }
 </script>
 
 <style lang="stylus">
-    .main-layout
+    .MainLayout
+        display: flex
+        padding: 10px
+        justify-content: center
         border: 1px solid silver
+
+        .ChessBoard
+            width: 50%
+            max-width: 800px
+        
+     
 </style>
