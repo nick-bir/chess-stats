@@ -1,15 +1,52 @@
-<template>
-    <div class="StatsTile">{{ roundPerc }}</div>
+<template lang="pug">
+    .StatsTile 
+        .StatsTile__percent(:style="{width: size, height: size}")
 </template>
 
 <script>
 export default {
     props: ['percentage'],
 
+    data() {
+        return {
+            size: '0%'
+        };
+    },
+
+    mounted() {
+        this.$nextTick(() => {
+            this.size = this.roundPerc + '%';
+        })
+    },
+
     computed: {
         roundPerc() { 
             return Math.round(this.percentage * 100) / 100; 
+        },
+    },
+
+    watch: {
+        roundPerc() {
+            this.size = this.roundPerc + '%';
         }
     }
 }
 </script>
+
+<style lang="stylus">
+    .StatsTile
+        display: flex
+        justify-content: center
+        align-items: center
+        width: 100%
+        height: 100%
+
+        &__percent
+            width: 0%
+            height: 0%
+            background: #f36363
+            border-radius: 50%
+            transition: width 0.5s, height 0.5s
+
+
+</style>

@@ -18,11 +18,7 @@ describe('ChessBoard', () => {
         });
     });
 
-    // it ('renders with empty stats', () => {
-    //     wrapper = shallowMount(ChessBoard);
-    // });
-
-    it('renders occupation tiles', async function() {
+    it('renders stats tiles', async function() {
         expect(wrapper.findAll('.StatsTile').length).toBe(3);
     });
 });
