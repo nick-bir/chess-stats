@@ -12,7 +12,6 @@ export default {
     name: "App",
     store,
     mounted() {
-        console.log('--- store', Object.keys(this.$store))
         this.$store.dispatch('LOAD_STATS')
     },
     components: {
