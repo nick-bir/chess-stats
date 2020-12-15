@@ -1,6 +1,6 @@
 <template lang="pug">
     .StatsTile 
-        .StatsTile__percent(:style="{width: size, height: size}")
+        .StatsTile__percent(:style="{width: size, height: size}" :title="roundPerc+'%'")
 </template>
 
 <script>
