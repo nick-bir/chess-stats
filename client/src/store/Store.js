@@ -9,7 +9,9 @@ Vue.use(Vuex);
 const _store = {
     state: {
         stats: {},
-        filters: new Set(),
+        filters: { 
+            figure: new Set()
+        },
     },
     getters,
     mutations,
