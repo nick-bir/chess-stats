@@ -1,5 +1,4 @@
 import getters from './getters';
-import testData from './Store.test-data';
 
 describe('Getters', () => {
     let state;

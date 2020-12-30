@@ -6,7 +6,7 @@ let localVue = createLocalVue();
 localVue.use(Vuex);
 
 describe('ChessBoard', () => {
-    let wrapper, store, dispatchSpy;
+    let wrapper, store;
 
     beforeEach(() => {
         let state = {

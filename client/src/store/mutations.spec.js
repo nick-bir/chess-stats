@@ -1,5 +1,4 @@
 import mutations from './mutations';
-import _store from './Store';
 
 describe('Mutations', () => {
     let state;
