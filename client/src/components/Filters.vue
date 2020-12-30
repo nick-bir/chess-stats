@@ -15,15 +15,19 @@
 
 <script>
 import ChessFigure from './ChessFigure';
+// import { mapActions } from 'vuex';
 
 export default {
 
     methods: {
+        // ...mapActions(['toggleFilter']),
         toggleFilter(filter, value) {
-            this.$emit('toggleFilter', {filter, value});
+            // this.$emit('toggleFilter', {filter, value});
+            this.$store.dispatch('toggleFilter', { filter, value })
         },
         resetFilter(filter) {
-            this.$emit('resetFilter', {filter});
+            //     this.$emit('resetFilter', {filter});
+            this.$store.dispatch('resetFilter', { filter });
         }
     },
 

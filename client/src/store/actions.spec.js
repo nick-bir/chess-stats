@@ -1,22 +1,25 @@
 import actions from "./actions";
 
 describe("Actions", () => {
-    describe('LOAD_STATS', () => {
-        let store;
-        let loadStats = actions.LOAD_STATS;
+    let store;
+    let { loadStats, toggleFilter } = actions;
 
+    beforeEach(() => {
+        store = {
+            dispatch: jest.fn(),
+            commit: jest.fn(),
+        }
+    })
+
+    describe('loadStats', () => {
         beforeEach(() => {
             global.fetch = jest.fn(()=>({
                 ...Promise.resolve(),
                 json() {
                     return {a: 123};
                 }
-
             }));
-            store = {
-                dispatch: jest.fn(),
-                commit: jest.fn(),
-            }
+            
         });
 
         afterEach(() => fetch.mockClear());
@@ -28,7 +31,14 @@ describe("Actions", () => {
     
         it("saves response from api", async function() {
             await loadStats(store);
-            expect(store.commit).toBeCalledWith('SET_STATS', {a: 123});
+            expect(store.commit).toBeCalledWith('setStats', {a: 123});
+        });
+    });
+    
+    describe('toggleFilter', () => {
+        it("commits toggleFilter", () => {
+            toggleFilter(store, { filter: 'pl' });
+            expect(store.commit).toBeCalledWith('toggleFilter', {filter: 'pl'});
         });
     });
 });

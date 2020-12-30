@@ -14,9 +14,8 @@ export default {
     },
 
     mounted() {
-        this.$nextTick(() => {
-            this.size = this.roundPerc + '%';
-        })
+        // this.$nextTick doesn't turn animation
+        setTimeout(()=>this.size = this.roundPerc + '%');
     },
 
     computed: {
@@ -27,6 +26,7 @@ export default {
 
     watch: {
         roundPerc() {
+            console.log("---watch", this.roundPerc)
             this.size = this.roundPerc + '%';
         }
     }

@@ -20,6 +20,6 @@ describe("App.vue", () => {
     });
 
     it("loads stats from api server when created", () => {
-        expect(store.dispatch).toBeCalledWith('LOAD_STATS');
+        expect(store.dispatch).toBeCalledWith('loadStats');
     });
 });

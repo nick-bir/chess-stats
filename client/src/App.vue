@@ -12,7 +12,7 @@ export default {
     name: "App",
     store,
     mounted() {
-        this.$store.dispatch('LOAD_STATS')
+        this.$store.dispatch('loadStats')
     },
     components: {
         MainLayout,

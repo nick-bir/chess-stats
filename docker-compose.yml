@@ -29,7 +29,7 @@ services:
       - "./client:/chess-stats-client" # for HMR
       - "/chess-stats-client/node_modules" # save container node_modules visibility
     ports:
-      - 8082:8082 # HMR seems not working when ports are not the same
+      - 8082:8082 # HMR seems to be not working when ports are not same
   
 volumes:
   mysql_data:

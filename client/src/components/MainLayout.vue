@@ -34,7 +34,7 @@ export default {
 
         .ChessBoard
             width: 50%
-            max-width: 800px
+            max-width: 500px
 
         .Filters
             margin-left: 20px

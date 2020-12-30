@@ -2,6 +2,7 @@ import Vue from 'vue';
 import Vuex from 'vuex';
 import actions from './actions';
 import mutations from './mutations';
+import getters from './getters';
 
 Vue.use(Vuex);
 
@@ -9,11 +10,7 @@ const _store = {
     state: {
         stats: {}
     },
-    getters: {
-        stats(state) {
-            return state.stats;
-        }
-    },
+    getters,
     mutations,
     actions
 };

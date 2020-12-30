@@ -99,6 +99,11 @@ export default {
             display: flex
             flex-wrap: wrap
 
+        &__row
+            box-sizing: border-box;
+            width: 100%
+            height: 12.5%
+
         &__letters
         &__digits
         &__tiles
@@ -129,11 +134,6 @@ export default {
             width: 90%
             height: 90%
             border: 1px solid #eaeaea
-
-        &__row
-            box-sizing: border-box;
-            width: 100%
-            height: 12.5%
         
         &__tile
             responsive-square()
