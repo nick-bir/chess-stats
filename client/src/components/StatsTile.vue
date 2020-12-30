@@ -57,6 +57,8 @@ export default {
             font-size: 0.5em
             opacity: 0.2
             z-index: 0.5
+            cursor: default
+            transition: opacity 0.3s
         
         &:hover &__percent
             opacity: 0.2
