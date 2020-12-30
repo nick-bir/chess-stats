@@ -16,17 +16,24 @@ describe('Mutations', () => {
     
     describe('toggleFilter', () => {
         it ('adds figures to filters', () => {
-            mutations.toggleFilter(store, { filter: 'figure', val: 'pd' });
+            mutations.toggleFilter(store, { filter: 'figure', value: 'pd' });
             expect(store.filters).toMatchObject({ figure: new Set(['pd']) });
-            mutations.toggleFilter(store, { filter: 'figure', val: 'kl' });
+            mutations.toggleFilter(store, { filter: 'figure', value: 'kl' });
             expect(store.filters).toMatchObject({ figure: new Set(['pd', 'kl']) });
         });
 
         it ('removes figures from filters', () => {
-            mutations.toggleFilter(store, { filter: 'figure', val: 'pd' });
-            mutations.toggleFilter(store, { filter: 'figure', val: 'kl' });
-            mutations.toggleFilter(store, { filter: 'figure', val: 'kl' });
+            mutations.toggleFilter(store, { filter: 'figure', value: 'pd' });
+            mutations.toggleFilter(store, { filter: 'figure', value: 'kl' });
+            mutations.toggleFilter(store, { filter: 'figure', value: 'kl' });
             expect(store.filters).toMatchObject({ figure: new Set(['pd']) });
+        });
+    });
+
+    describe('resetFilter', () => {
+        it ('resets figure filter', () => {
+            mutations.resetFilter(store, { filter: 'figure' });
+            expect(store.filters).toMatchObject({ figure: new Set() });
         });
     });
 });

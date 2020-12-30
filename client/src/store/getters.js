@@ -3,7 +3,11 @@ export default {
         return state.stats;
     },
 
-    filteredStats(state) {
+    filters(state) {
+        return state.filters
+    },
 
-    }
+    // filteredStats(state) {
+
+    // }
 };

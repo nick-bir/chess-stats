@@ -4,9 +4,23 @@
         fieldset.Filters__filter
             legend.Filters__filter-container Occupation time:
             label.Filters__filter-controls
-                ChessFigure(:figure="f" size="30px" v-for="f in 'rnbqkp'" @click.native="toggleFilter('figure', f)")
+                ChessFigure(
+                    v-for="f in 'rnbqkp'" 
+                    :figure="f" 
+                    class='Filters__filter-option' 
+                    :class="{'Filters__filter-option_selected': isFigureSelected(f)}" 
+                    size="30px" 
+                    @click.native="toggleFilter('figure', f)"
+                )
             label.Filters__filter-controls
-                ChessFigure(:figure="f" size="30px" v-for="f in 'RNBQKP'" @click.native="toggleFilter('figure', f)")
+                ChessFigure(
+                    v-for="f in 'RNBQKP'" 
+                    class='Filters__filter-option' 
+                    :class="{'Filters__filter-option_selected': isFigureSelected(f)}" 
+                    :figure="f" 
+                    size="30px" 
+                    @click.native="toggleFilter('figure', f)"
+                    )
             label.Filters__filter-controls
                 a.Filters__filter-reset( @click="resetFilter('figure')") all
 
@@ -15,20 +29,29 @@
 
 <script>
 import ChessFigure from './ChessFigure';
-// import { mapActions } from 'vuex';
+import { mapGetters } from 'vuex';
 
 export default {
 
     methods: {
         // ...mapActions(['toggleFilter']),
         toggleFilter(filter, value) {
-            // this.$emit('toggleFilter', {filter, value});
             this.$store.dispatch('toggleFilter', { filter, value })
         },
+
         resetFilter(filter) {
             //     this.$emit('resetFilter', {filter});
             this.$store.dispatch('resetFilter', { filter });
-        }
+        },
+
+        isFigureSelected(f) {
+            return this.filters.figure?.has(f);
+        },
+
+    },
+
+    computed: {
+        ...mapGetters(['filters'])
     },
 
     components: {
