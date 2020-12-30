@@ -8,11 +8,18 @@ Vue.use(Vuex);
 
 const _store = {
     state: {
-        stats: {}
+        stats: {},
+        filters: new Set(),
     },
     getters,
     mutations,
     actions
 };
 
-export const store = new Vuex.Store(_store);
+const store = new Vuex.Store(_store);
+
+export {
+    store, 
+    _store,
+}
+

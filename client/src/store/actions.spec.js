@@ -2,7 +2,7 @@ import actions from "./actions";
 
 describe("Actions", () => {
     let store;
-    let { loadStats, toggleFilter } = actions;
+    let { loadStats, toggleFilter, resetFilter } = actions;
 
     beforeEach(() => {
         store = {
@@ -39,6 +39,13 @@ describe("Actions", () => {
         it("commits toggleFilter", () => {
             toggleFilter(store, { filter: 'pl' });
             expect(store.commit).toBeCalledWith('toggleFilter', {filter: 'pl'});
+        });
+    });
+    
+    describe('resetFilter', () => {
+        it("commits resetFilter", () => {
+            resetFilter(store, { filter: 'pl' });
+            expect(store.commit).toBeCalledWith('resetFilter', {filter: 'pl'});
         });
     });
 });
