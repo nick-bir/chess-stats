@@ -1,7 +1,7 @@
 import { mount, createLocalVue } from '@vue/test-utils';
 import Vuex from 'vuex';
+import { _store } from '../store/Store';
 import Filters from './Filters';
-import _store from '../store/Store';
 
 let localVue = createLocalVue();
 localVue.use(Vuex);
@@ -10,8 +10,7 @@ describe('Filters', () => {
     let wrapper, store, dispatchSpy;
 
     beforeEach(() => {
-        store = new Vuex.Store(require('../store/Store')._store)
-
+        store = new Vuex.Store(_store)
         dispatchSpy = jest.spyOn(store, 'dispatch');
    
         wrapper = mount(Filters, { 

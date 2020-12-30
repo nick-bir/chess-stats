@@ -22,6 +22,7 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
 import ChessFigure from './ChessFigure'
 import StatsTile from './StatsTile'
 
@@ -56,6 +57,10 @@ export default {
         }
     },
 
+    computed: {
+        ...mapGetters(['filteredStats'])
+    },
+
     methods: {
         getFigure(l, d) {
             let f = this.board[d-1][l.charCodeAt(0) - 'a'.charCodeAt(0)];
@@ -63,7 +68,7 @@ export default {
         },
 
         getPercentage(l, d) {
-            return this.stats?.percentageByPiece?.[l+d]?.s
+            return this.filteredStats[l+d];
         }
     },
 

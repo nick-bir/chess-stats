@@ -3,9 +3,26 @@ export default {
         return state.stats;
     },
 
-    filters(state) {
-        return state.filters
+    filteredStats(state) {
+        let figuresFilter = new Set(['s']);
+        if (state.filters.figure.size) 
+            figuresFilter = state.filters.figure;
+
+        let stats = {};
+        let pbpStats = state.stats.percentageByPiece || {};
+        for (let [cell, figures] of Object.entries(pbpStats)) {
+            stats[cell] = 0;
+            for (let [figure, val] of Object.entries(figures)) {
+                stats[cell] += figuresFilter.has(figure) ? val : 0;
+            }
+        }
+
+        return stats;
     },
+
+    filters(state) {
+        return state.filters;
+    }
 
     // filteredStats(state) {
 
