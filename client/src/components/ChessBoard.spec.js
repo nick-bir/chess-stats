@@ -1,24 +1,46 @@
-import { mount } from '@vue/test-utils';
+import { mount, createLocalVue } from '@vue/test-utils';
+import Vuex from 'vuex';
+import { _store } from '../store/Store';
 import ChessBoard from './ChessBoard';
+let localVue = createLocalVue();
+localVue.use(Vuex);
 
 describe('ChessBoard', () => {
-    let wrapper;
+    let wrapper, store, dispatchSpy;
 
     beforeEach(() => {
-        wrapper = mount(ChessBoard, {
-            propsData: {
-                stats: {
-                    percentageByPiece: {
-                        a8: { s: 40 },
-                        d5: { s: 30 },
-                        f5: { s: 30 },
+        let state = {
+            stats: {
+                percentageByPiece: {
+                    a8: {
+                        s: 0.5,
+                        r: 0.3,
+                        q: 0.05
+                    },
+                    c4: {
+                        s: 0.2,
+                        r: 0.4,
+                        q: 0.06
                     }
                 }
+            },
+            filters: {
+                figure: new Set()
             }
+        };
+
+        store = new Vuex.Store({
+            ..._store,
+            state
+        });
+
+        wrapper = mount(ChessBoard, {
+            localVue,
+            store, 
         });
     });
 
     it('renders stats tiles', async function() {
-        expect(wrapper.findAll('.StatsTile').length).toBe(3);
+        expect(wrapper.findAll('.StatsTile').length).toBe(2);
     });
 });

@@ -7,12 +7,12 @@ import getters from './getters';
 Vue.use(Vuex);
 
 const _store = {
-    state: {
+    state: () => ({
         stats: {},
         filters: { 
             figure: new Set()
         },
-    },
+    }),
     getters,
     mutations,
     actions

@@ -30,18 +30,18 @@ describe('Mutations', () => {
             });
         });
 
-        // it ('removes figures from filters', () => {
-        //     mutations.toggleFilter(state, { filter: 'figure', value: 'pd' });
-        //     mutations.toggleFilter(state, { filter: 'figure', value: 'kl' });
-        //     mutations.toggleFilter(state, { filter: 'figure', value: 'kl' });
-        //     expect(state.filters).toMatchObject({ figure: new Set(['pd']) });
-        // });
+        it ('removes figures from filters', () => {
+            mutations.toggleFilter(state, { filter: 'figure', value: 'pd' });
+            mutations.toggleFilter(state, { filter: 'figure', value: 'kl' });
+            mutations.toggleFilter(state, { filter: 'figure', value: 'kl' });
+            expect(state.filters).toMatchObject({ figure: new Set(['pd']) });
+        });
     });
 
-    // describe('resetFilter', () => {
-    //     it ('resets figure filter', () => {
-    //         mutations.resetFilter(store, { filter: 'figure' });
-    //         expect(store.filters).toMatchObject({ figure: new Set() });
-    //     });
-    // });
+    describe('resetFilter', () => {
+        it ('resets figure filter', () => {
+            mutations.resetFilter(state, { filter: 'figure' });
+            expect(state.filters).toMatchObject({ figure: new Set() });
+        });
+    });
 });
