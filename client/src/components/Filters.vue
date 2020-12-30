@@ -93,6 +93,10 @@ export default {
             display: block
             text-align: right
             padding-right: 10px
+            border-radius: 20%
+            cursor: pointer
+            &:hover
+                color: black
 
 
 </style>
