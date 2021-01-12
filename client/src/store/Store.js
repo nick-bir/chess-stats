@@ -10,7 +10,8 @@ const _store = {
     state: () => ({
         stats: {},
         filters: { 
-            figure: new Set()
+            figure: new Set(),
+            winner: null,
         },
     }),
     getters,
