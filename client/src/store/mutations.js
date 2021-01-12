@@ -10,6 +10,8 @@ function toggleFilter(state, { filter, value }) {
         else
             state.filters.figure.add(value);
         filters.figure = new Set(filters.figure);
+    } else {
+        filters[filter] = value === '*' ? null : value;
     }
 }
 

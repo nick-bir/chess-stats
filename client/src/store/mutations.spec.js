@@ -35,6 +35,16 @@ describe('Mutations', () => {
             mutations.toggleFilter(state, { filter: 'figure', value: 'kl' });
             expect(state.filters).toMatchObject({ figure: new Set(['pd']) });
         });
+
+        it ('toggles winner filter', () => {
+            mutations.toggleFilter(state, { filter: 'winner', value: 'black' });
+            expect(state.filters).toMatchObject({ winner: 'black' });
+        });
+
+        it ('resets winner filter for *', () => {
+            mutations.toggleFilter(state, { filter: 'winner', value: '*' });
+            expect(state.filters).toMatchObject({ winner: null });
+        });
     });
 
     describe('resetFilter', () => {
