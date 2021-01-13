@@ -80,7 +80,7 @@ export default {
 
     &__filter {
         border: 1px solid silver;
-        border-radius: 20px;
+        border-radius: 15px;
         color: gray;
     }
 
