@@ -13,6 +13,7 @@ const _store = {
             figure: new Set(),
             winner: null,
         },
+        dataRequestStarted: false,
     }),
     getters,
     mutations,

@@ -21,8 +21,13 @@ function resetFilter(state, { filter }) {
     }
 }
 
+function dataRequestStarted(state) {
+    state.dataRequestStarted = true;
+}
+
 export default {
     setStats,
     toggleFilter,
-    resetFilter
+    resetFilter,
+    dataRequestStarted
 };
