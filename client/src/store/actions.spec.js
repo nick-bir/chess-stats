@@ -8,8 +8,8 @@ jest.mock('node-fetch', () => {
             ...Promise.resolve(),
             json: () => val
         };
-    }
-        
+    };
+
     return fn;
 });
 
@@ -20,24 +20,49 @@ describe('Actions', () => {
     beforeEach(async () => {
         store = {
             dispatch: jest.fn(),
-            commit: jest.fn()
+            commit: jest.fn(),
+            state: {
+                filters: {}
+            },
         };
 
         fetch = require('node-fetch');
+        fetch.mockClear();
         fetch.setRetVal({ a: 123 });
     });
 
     describe('loadStats', () => {
-        it('performs request to api server', async function() {
+        it('performs request to api server', async () => {
             await loadStats(store);
             expect(fetch).toBeCalledWith(
                 'http://localhost:8081/api/v1/games/stats'
             );
         });
 
-        it('saves response from api', async function() {
+        it('saves response from api', async () => {
             await loadStats(store);
             expect(store.commit).toBeCalledWith('setStats', { a: 123 });
+        });
+
+        it('applies winner.name filter', async () => {
+            store.state.filters = { winner: {name: 'Great,P'} };
+            await loadStats(store);
+            expect(decodeURIComponent(fetch.mock.calls[0][0])).toBe(
+                'http://localhost:8081/api/v1/games/stats?filter=\'white="Great,P"+or+black="Great,P"\'' 
+            );
+        });
+
+        it('applies winner.side filter', async () => {
+            store.state.filters = { winner: {side: 'black'} };
+            await loadStats(store);
+            expect(decodeURIComponent(fetch.mock.calls[0][0])).toBe(
+                'http://localhost:8081/api/v1/games/stats?filter=\'result=1\'' 
+            );
+        });
+
+        it('applies both winner fields filter', async () => {
+            store.state.filters = { winner: {side: 'black'} };
+            throw new Error('INMPLEMENT HERE');
         });
     });
 
