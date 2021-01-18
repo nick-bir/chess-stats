@@ -23,16 +23,17 @@ async function loadStats({ commit, state }) {
 
     console.log('----fetching:', url);
 
+    
+    commit('dataRequestStarted');
     const res = await (await fetch(url.toString())).json();
+    commit('dataRequestFinished');
     commit('setStats', res);
 }
 
 function toggleFilter({ commit, dispatch }, { filter, value }) {
-    // console.log('---togglefilter', filter, value)
     commit('toggleFilter', { filter, value });
 
     if (filter === 'winner.side') {
-        commit('dataRequestStarted');
         dispatch('loadStats');
     }
 }

@@ -41,9 +41,14 @@ function dataRequestStarted(state) {
     state.dataRequestStarted = true;
 }
 
+function dataRequestFinished(state) {
+    state.dataRequestStarted = false;
+}
+
 export default {
     setStats,
     toggleFilter,
     resetFilter,
-    dataRequestStarted
+    dataRequestStarted,
+    dataRequestFinished
 };

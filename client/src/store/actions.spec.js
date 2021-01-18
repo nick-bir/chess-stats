@@ -45,6 +45,12 @@ describe('Actions', () => {
             expect(store.commit).toBeCalledWith('setStats', { a: 123 });
         });
 
+        it('indicates loading progress', async () => {
+            await loadStats(store);
+            expect(store.commit).toBeCalledWith('dataRequestStarted');
+            expect(store.commit).toBeCalledWith('dataRequestFinished');
+        });
+
         it('applies winner.name filter', async () => {
             store.state.filters = { winner: { name: 'Great,P' } };
             await loadStats(store);
@@ -61,10 +67,10 @@ describe('Actions', () => {
             );
         });
 
-        it('applies both winner fields filter', async () => {
-            store.state.filters = { winner: {side: 'black'} };
-            throw new Error('INMPLEMENT HERE');
-        });
+        // it('applies both winner fields filter', async () => {
+        //     store.state.filters = { winner: {side: 'black'} };
+        //     throw new Error('INMPLEMENT HERE');
+        // });
     });
 
     describe('toggleFilter', () => {
@@ -74,9 +80,8 @@ describe('Actions', () => {
                 filter: 'pl'
             });
         });
-        it('dispatch loadStats on winner.side filter change', () => {
-            toggleFilter(store, { filter: 'winner.side', value: 'white' });
-            expect(store.commit).toBeCalledWith('dataRequestStarted');
+        it('dispatch loadStats on winner.side filter change', async () => {
+            await toggleFilter(store, { filter: 'winner.side', value: 'white' });
             expect(store.dispatch).toBeCalledWith('loadStats');
         });
     });
