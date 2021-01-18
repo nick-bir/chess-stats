@@ -7,7 +7,11 @@ describe('Mutations', () => {
         state = {
             stats: {},
             filters: {
-                figure: new Set()
+                figure: new Set(),
+                winner: {
+                    side: null,
+                    name: null
+                }
             }
         };
     });
@@ -29,26 +33,26 @@ describe('Mutations', () => {
             });
         });
 
-        it ('removes figures from filters', () => {
+        it('removes figures from filters', () => {
             mutations.toggleFilter(state, { filter: 'figure', value: 'pd' });
             mutations.toggleFilter(state, { filter: 'figure', value: 'kl' });
             mutations.toggleFilter(state, { filter: 'figure', value: 'kl' });
             expect(state.filters).toMatchObject({ figure: new Set(['pd']) });
         });
 
-        it ('toggles winner filter', () => {
-            mutations.toggleFilter(state, { filter: 'winner', value: 'black' });
-            expect(state.filters).toMatchObject({ winner: 'black' });
+        it('toggles winner.side filter', () => {
+            mutations.toggleFilter(state, { filter: 'winner.side', value: 'black' });
+            expect(state.filters).toMatchObject({ winner: { side: 'black' } });
         });
 
-        it ('resets winner filter for *', () => {
-            mutations.toggleFilter(state, { filter: 'winner', value: '*' });
-            expect(state.filters).toMatchObject({ winner: null });
+        it('resets winner.side filter for *', () => {
+            mutations.toggleFilter(state, { filter: 'winner.side', value: '*' });
+            expect(state.filters).toMatchObject({ winner: { side: null }});
         });
     });
 
     describe('resetFilter', () => {
-        it ('resets figure filter', () => {
+        it('resets figure filter', () => {
             mutations.resetFilter(state, { filter: 'figure' });
             expect(state.filters).toMatchObject({ figure: new Set() });
         });

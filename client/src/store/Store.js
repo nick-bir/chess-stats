@@ -9,11 +9,14 @@ Vue.use(Vuex);
 const _store = {
     state: () => ({
         stats: {},
-        filters: { 
+        filters: {
             figure: new Set(),
-            winner: null,
+            winner: {
+                side: null,
+                name: null
+            }
         },
-        dataRequestStarted: false,
+        dataRequestStarted: false
     }),
     getters,
     mutations,
@@ -22,8 +25,4 @@ const _store = {
 
 const store = new Vuex.Store(_store);
 
-export {
-    store, 
-    _store,
-}
-
+export { store, _store };

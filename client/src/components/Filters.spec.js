@@ -50,7 +50,7 @@ describe('Filters', () => {
     describe('Occupation time', () => {
         it('sets winner filter', async function() {
             wrapper.find('.Filters__filter_winner button').trigger('click');
-            expect(store.state.filters).toMatchObject({ winner: 'black' });
+            expect(store.state.filters).toMatchObject({ winner: {side: 'black'} });
         });
 
         it('marks winner type as selected', async function() {

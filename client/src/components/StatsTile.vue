@@ -27,7 +27,6 @@ export default {
 
     watch: {
         roundPerc() {
-            console.log("---watch", this.roundPerc)
             this.size = this.roundPerc + '%';
         }
     }
