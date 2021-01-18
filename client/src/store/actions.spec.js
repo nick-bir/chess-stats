@@ -22,8 +22,9 @@ describe('Actions', () => {
             dispatch: jest.fn(),
             commit: jest.fn(),
             state: {
-                filters: {}
-            },
+                filters: {},
+                dataRequestStarted: false
+            }
         };
 
         fetch = require('node-fetch');
@@ -45,18 +46,18 @@ describe('Actions', () => {
         });
 
         it('applies winner.name filter', async () => {
-            store.state.filters = { winner: {name: 'Great,P'} };
+            store.state.filters = { winner: { name: 'Great,P' } };
             await loadStats(store);
             expect(decodeURIComponent(fetch.mock.calls[0][0])).toBe(
-                'http://localhost:8081/api/v1/games/stats?filter=\'white="Great,P"+or+black="Great,P"\'' 
+                'http://localhost:8081/api/v1/games/stats?filter=(white="Great,P"+or+black="Great,P")'
             );
         });
 
         it('applies winner.side filter', async () => {
-            store.state.filters = { winner: {side: 'black'} };
+            store.state.filters = { winner: { side: 'black' } };
             await loadStats(store);
             expect(decodeURIComponent(fetch.mock.calls[0][0])).toBe(
-                'http://localhost:8081/api/v1/games/stats?filter=\'result=1\'' 
+                "http://localhost:8081/api/v1/games/stats?filter=(result=1)"
             );
         });
 
@@ -73,8 +74,8 @@ describe('Actions', () => {
                 filter: 'pl'
             });
         });
-        it('dispatch requestData on winner filter change', () => {
-            toggleFilter(store, { filter: 'winner', value: 'white' });
+        it('dispatch loadStats on winner.side filter change', () => {
+            toggleFilter(store, { filter: 'winner.side', value: 'white' });
             expect(store.commit).toBeCalledWith('dataRequestStarted');
             expect(store.dispatch).toBeCalledWith('loadStats');
         });

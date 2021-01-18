@@ -14,12 +14,14 @@ async function loadStats({ commit, state }) {
     }
 
     if (params.filter.length) {
-        params.filter = `'${params.filter}'`;
+        params.filter = `(${params.filter})`;
     } else {
         delete params.filter;
     }
 
     url.search = new URLSearchParams(params).toString();
+
+    console.log('----fetching:', url);
 
     const res = await (await fetch(url.toString())).json();
     commit('setStats', res);
@@ -29,7 +31,7 @@ function toggleFilter({ commit, dispatch }, { filter, value }) {
     // console.log('---togglefilter', filter, value)
     commit('toggleFilter', { filter, value });
 
-    if (filter === 'winner') {
+    if (filter === 'winner.side') {
         commit('dataRequestStarted');
         dispatch('loadStats');
     }

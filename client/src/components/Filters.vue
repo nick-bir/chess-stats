@@ -25,16 +25,16 @@
         legend.Filters__filter-container Winner:
         .Filters__filter-options
             button.Filters__filter-option(
-                :class='{ "Filters__filter-option_selected": filters.winner == "black" }',
-                @click='toggleFilter("winner", "black")'
+                :class='{ "Filters__filter-option_selected": filters.winner.side == "black" }',
+                @click='toggleFilter("winner.side", "black")'
             ) Black
             button.Filters__filter-option(
-                :class='{ "Filters__filter-option_selected": filters.winner == null }',
-                @click='toggleFilter("winner", "*")'
+                :class='{ "Filters__filter-option_selected": filters.winner.side == null }',
+                @click='toggleFilter("winner.side", "*")'
             ) Any
             button.Filters__filter-option(
-                :class='{ "Filters__filter-option_selected": filters.winner == "white" }',
-                @click='toggleFilter("winner", "white")'
+                :class='{ "Filters__filter-option_selected": filters.winner.side == "white" }',
+                @click='toggleFilter("winner.side", "white")'
             ) White
 </template>
 
