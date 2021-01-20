@@ -21,9 +21,8 @@ async function loadStats({ commit, state }) {
 
     url.search = new URLSearchParams(params).toString();
 
-    console.log('----fetching:', url);
+    // console.log('----fetching:', url.toString());
 
-    
     commit('dataRequestStarted');
     const res = await (await fetch(url.toString())).json();
     commit('dataRequestFinished');

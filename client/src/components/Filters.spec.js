@@ -3,10 +3,15 @@ import Vuex from 'vuex';
 import { _store } from '../store/Store';
 import Filters from './Filters';
 
+
 let localVue = createLocalVue();
 localVue.use(Vuex);
 
-describe('Filters', () => {
+
+jest.mock('node-fetch');
+require('node-fetch'); // Should be required for correck mocking in actions.js
+
+describe('Filters.vue', () => {
     let wrapper, store, dispatchSpy;
 
     beforeEach(() => {
@@ -50,7 +55,9 @@ describe('Filters', () => {
     describe('Occupation time', () => {
         it('sets winner filter', async function() {
             wrapper.find('.Filters__filter_winner button').trigger('click');
-            expect(store.state.filters).toMatchObject({ winner: {side: 'black'} });
+            expect(store.state.filters).toMatchObject({
+                winner: { side: 'black' }
+            });
         });
 
         it('marks winner type as selected', async function() {
@@ -66,3 +73,4 @@ describe('Filters', () => {
         });
     });
 });
+
