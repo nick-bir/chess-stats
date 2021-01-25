@@ -22,9 +22,10 @@ export default {
 
     filters(state) {
         return state.filters;
+    },
+
+    dataRequestStarted(state) {
+        return state.dataRequestStarted
     }
 
-    // filteredStats(state) {
-
-    // }
 };

@@ -6,6 +6,7 @@
         .Filters__filter-options
             ChessFigure.Filters__filter-option(
                 v-for='f in "rnbqkp"',
+                :key='f'
                 :figure='f',
                 :class='{ "Filters__filter-option_selected": isFigureSelected(f) }',
                 size='30px',
@@ -14,6 +15,7 @@
         .Filters__filter-options
             ChessFigure.Filters__filter-option(
                 v-for='f in "RNBQKP"',
+                :key='f'
                 :class='{ "Filters__filter-option_selected": isFigureSelected(f) }',
                 :figure='f',
                 size='30px',
