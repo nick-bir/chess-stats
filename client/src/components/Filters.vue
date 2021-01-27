@@ -6,7 +6,7 @@
         .Filters__filter-options
             ChessFigure.Filters__filter-option(
                 v-for='f in "rnbqkp"',
-                :key='f'
+                :key='f',
                 :figure='f',
                 :class='{ "Filters__filter-option_selected": isFigureSelected(f) }',
                 size='30px',
@@ -15,7 +15,7 @@
         .Filters__filter-options
             ChessFigure.Filters__filter-option(
                 v-for='f in "RNBQKP"',
-                :key='f'
+                :key='f',
                 :class='{ "Filters__filter-option_selected": isFigureSelected(f) }',
                 :figure='f',
                 size='30px',
@@ -41,8 +41,8 @@
 </template>
 
 <script>
-import ChessFigure from './ChessFigure';
 import { mapGetters } from 'vuex';
+import ChessFigure from './ChessFigure';
 
 export default {
     methods: {
@@ -71,55 +71,46 @@ export default {
 </script>
 
 <style lang="stylus">
-.Filters {
-    min-width: 200px;
+.Filters
+    min-width: 200px
 
-    &__caption {
-        margin-bottom: 0.2em;
-        text-align: center;
-        font-size: 1.3em;
-    }
+    &__caption
+        margin-bottom: .2em
+        text-align: center
+        font-size: 1.3em
 
-    &__filter {
-        border: 1px solid silver;
-        border-radius: 15px;
-        color: gray;
-    }
+    &__filter
+        margin-bottom: 5px
+        border: 2px solid #c0c0c070
+        border-radius: 15px
+        color: gray
 
-    &__filter-options {
-        display: block;
-    }
+    &__filter-options
+        display: block
 
-    &__filter-option {
-        border: 1px solid white;
-        border-radius: 5px;
-        opacity: 0.6;
-        cursor: pointer;
+    &__filter-option
+        border: 1px solid white
+        border-radius: 5px
+        opacity: .6
+        cursor: pointer
 
-        &:not(:last-child) {
-            margin-right: 2px;
-        }
+        &:not(:last-child)
+            margin-right: 2px
 
-        &:hover {
-            border-color: #ef72d0;
-        }
+        &:hover
+            border-color: #ef72d0
 
-        &_selected {
-            opacity: 1;
-            border-color: #eab4dd;
-        }
-    }
+        &_selected
+            opacity: 1
+            border-color: #eab4dd
 
-    &__filter-reset {
-        display: block;
-        text-align: right;
-        padding-right: 10px;
-        border-radius: 20%;
-        cursor: pointer;
+    &__filter-reset
+        display: block
+        text-align: right
+        padding-right: 10px
+        border-radius: 20%
+        cursor: pointer
 
-        &:hover {
-            color: black;
-        }
-    }
-}
+        &:hover
+            color: black
 </style>
