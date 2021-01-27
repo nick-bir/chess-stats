@@ -26,23 +26,24 @@
     fieldset.Filters__filter.Filters__filter_winner
         legend.Filters__filter-container Winner:
         .Filters__filter-options
-            button.Filters__filter-option(
-                :class='{ "Filters__filter-option_selected": filters.winner.side == "black" }',
+            FilterButton(
                 @click='toggleFilter("winner.side", "black")'
+                :active='filters.winner.side == "black"',
             ) Black
-            button.Filters__filter-option(
-                :class='{ "Filters__filter-option_selected": filters.winner.side == null }',
+            FilterButton(
                 @click='toggleFilter("winner.side", "*")'
+                :active='filters.winner.side == "*"',
             ) Any
-            button.Filters__filter-option(
-                :class='{ "Filters__filter-option_selected": filters.winner.side == "white" }',
+            FilterButton(
                 @click='toggleFilter("winner.side", "white")'
+                :active='filters.winner.side == "white"',
             ) White
 </template>
 
 <script>
 import { mapGetters } from 'vuex';
-import ChessFigure from './ChessFigure';
+import ChessFigure from './ChessFigure.vue';
+import FilterButton from './FilterButton.vue';
 
 export default {
     methods: {
@@ -66,6 +67,7 @@ export default {
 
     components: {
         ChessFigure,
+        FilterButton,
     },
 };
 </script>
