@@ -119,6 +119,9 @@ responsive-square()
 
     &__letters, &__digits, &__tiles
         box-sizing: border-box
+    
+    &__letters, &__digits
+        color: gray
 
     &__letters
         width: 100%
