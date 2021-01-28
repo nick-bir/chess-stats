@@ -1,21 +1,17 @@
 <template lang="pug">
-a.FilterButton(
-    @click='$emit("click")',
-    
-    :class='classes'
-)
+a.FilterButton(@click='$emit("click")', :class='classes')
     slot
 </template>
 
 <script>
 export default {
     name: 'FilterButton',
-    props: ['active', 'square'],
+    props: ['active', 'size'],
     computed: {
         classes() {
             return {
                 FilterButton_active: this.active,
-                ['FilterButton_square_' + this.square]: this.square,
+                ['FilterButton_size_' + this.size]: this.size,
             };
         },
     },
@@ -41,8 +37,8 @@ export default {
         box-shadow: none
         color: white
 
-    &_square
-        &_m
+    &_size
+        &_square-m
             width: 2em
             height: 2em
             margin: 3px

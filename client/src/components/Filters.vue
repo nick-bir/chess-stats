@@ -4,37 +4,21 @@
     fieldset.Filters__filter
         legend.Filters__filter-container Occupation time:
         .Filters__filter-options
-            //- ChessFigure.Filters__filter-option(
-            //-     v-for='f in "rnbqkp"',
-            //-     :key='f',
-            //-     :figure='f',
-            //-     :class='{ "Filters__filter-option_selected": isFigureSelected(f) }',
-            //-     size='30px',
-            //-     @click.native='toggleFilter("figure", f)'
-            //- )
             FilterButton(
                 v-for='f in "rnbqkp"',
                 :key='f',
                 :active='isFigureSelected(f)',
-                square='m'
+                size='square-m'
                 @click.native='toggleFilter("figure", f)'
             )
                 ChessFigure(:figure='f', size='30px')
 
         .Filters__filter-options
-            //- ChessFigure.Filters__filter-option(
-            //-     v-for='f in "RNBQKP"',
-            //-     :key='f',
-            //-     :class='{ "Filters__filter-option_selected": isFigureSelected(f) }',
-            //-     :figure='f',
-            //-     size='30px',
-            //-     @click.native='toggleFilter("figure", f)'
-            //- )
             FilterButton(
                 v-for='f in "RNBQKP"',
                 :key='f',
                 :active='isFigureSelected(f)',
-                square='m'
+                size='square-m'
                 @click.native='toggleFilter("figure", f)'
             )
                 ChessFigure(:figure='f', size='30px')
@@ -106,16 +90,6 @@ export default {
 
     &__filter-options
         display: block
-
-    // &__filter-option
-    //     border: 1px solid white
-    //     border-radius: 5px
-    //     opacity: .6
-    //     cursor: pointer
-
-        // &:not(:last-child)
-        //     margin-right: 2px
-
         &:hover
             border-color: #ef72d0
 
