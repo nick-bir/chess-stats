@@ -25,10 +25,10 @@ describe('MainLayout.vue', () => {
         expect(wrapper.findComponent(Filters).exists()).toBe(true);
     });
 
-    it("displays 'loading-indicator' when data requested", () => {
+    it("displays 'loading-indicator' when data requested", async () => {
         store.dispatch('loadStats');
         expect(store.state.dataRequestStarted).toBe(true);
-
+        await wrapper.vm.$nextTick();
         expect(wrapper.findComponent(LoadingIndicator).exists()).toBe(true);
     });
 });
