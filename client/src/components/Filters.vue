@@ -4,39 +4,56 @@
     fieldset.Filters__filter
         legend.Filters__filter-container Occupation time:
         .Filters__filter-options
-            ChessFigure.Filters__filter-option(
+            //- ChessFigure.Filters__filter-option(
+            //-     v-for='f in "rnbqkp"',
+            //-     :key='f',
+            //-     :figure='f',
+            //-     :class='{ "Filters__filter-option_selected": isFigureSelected(f) }',
+            //-     size='30px',
+            //-     @click.native='toggleFilter("figure", f)'
+            //- )
+            FilterButton(
                 v-for='f in "rnbqkp"',
                 :key='f',
-                :figure='f',
-                :class='{ "Filters__filter-option_selected": isFigureSelected(f) }',
-                size='30px',
+                :active='isFigureSelected(f)',
+                square='m'
                 @click.native='toggleFilter("figure", f)'
             )
+                ChessFigure(:figure='f', size='30px')
+
         .Filters__filter-options
-            ChessFigure.Filters__filter-option(
+            //- ChessFigure.Filters__filter-option(
+            //-     v-for='f in "RNBQKP"',
+            //-     :key='f',
+            //-     :class='{ "Filters__filter-option_selected": isFigureSelected(f) }',
+            //-     :figure='f',
+            //-     size='30px',
+            //-     @click.native='toggleFilter("figure", f)'
+            //- )
+            FilterButton(
                 v-for='f in "RNBQKP"',
                 :key='f',
-                :class='{ "Filters__filter-option_selected": isFigureSelected(f) }',
-                :figure='f',
-                size='30px',
+                :active='isFigureSelected(f)',
+                square='m'
                 @click.native='toggleFilter("figure", f)'
             )
+                ChessFigure(:figure='f', size='30px')
         .Filters__filter-options
             a.Filters__filter-reset(@click='resetFilter("figure")') all
     fieldset.Filters__filter.Filters__filter_winner
         legend.Filters__filter-container Winner:
         .Filters__filter-options
             FilterButton(
-                @click='toggleFilter("winner.side", "black")'
-                :active='filters.winner.side == "black"',
+                @click='toggleFilter("winner.side", "black")',
+                :active='filters.winner.side == "black"'
             ) Black
             FilterButton(
-                @click='toggleFilter("winner.side", "*")'
-                :active='filters.winner.side == "*"',
+                @click='toggleFilter("winner.side", "*")',
+                :active='!filters.winner.side'
             ) Any
             FilterButton(
-                @click='toggleFilter("winner.side", "white")'
-                :active='filters.winner.side == "white"',
+                @click='toggleFilter("winner.side", "white")',
+                :active='filters.winner.side == "white"'
             ) White
 </template>
 
@@ -90,14 +107,14 @@ export default {
     &__filter-options
         display: block
 
-    &__filter-option
-        border: 1px solid white
-        border-radius: 5px
-        opacity: .6
-        cursor: pointer
+    // &__filter-option
+    //     border: 1px solid white
+    //     border-radius: 5px
+    //     opacity: .6
+    //     cursor: pointer
 
-        &:not(:last-child)
-            margin-right: 2px
+        // &:not(:last-child)
+        //     margin-right: 2px
 
         &:hover
             border-color: #ef72d0

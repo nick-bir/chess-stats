@@ -28,7 +28,7 @@ describe('Filters.vue', () => {
 
     describe('Occupation time', () => {
         it('sets figure filter', async function() {
-            wrapper.find('.ChessFigure').trigger('click');
+            wrapper.find('.FilterButton').trigger('click');
             expect(store.state.filters).toMatchObject({
                 figure: new Set(['r'])
             });
@@ -40,35 +40,35 @@ describe('Filters.vue', () => {
         });
 
         it('marks figure as selected', async function() {
-            const figure = wrapper.find('.ChessFigure');
+            const figure = wrapper.find('.FilterButton');
             expect(figure.classes()).not.toContain(
-                'Filters__filter-option_selected'
+                'FilterButton_active'
             );
             figure.trigger('click');
             await wrapper.vm.$nextTick();
             expect(figure.classes()).toContain(
-                'Filters__filter-option_selected'
+                'FilterButton_active'
             );
         });
     });
 
     describe('Occupation time', () => {
         it('sets winner filter', async function() {
-            wrapper.find('.Filters__filter_winner button').trigger('click');
+            wrapper.find('.Filters__filter_winner .FilterButton').trigger('click');
             expect(store.state.filters).toMatchObject({
                 winner: { side: 'black' }
             });
         });
 
         it('marks winner type as selected', async function() {
-            const winner = wrapper.find('.Filters__filter_winner button');
+            const winner = wrapper.find('.Filters__filter_winner .FilterButton');
             expect(winner.classes()).not.toContain(
-                'Filters__filter-option_selected'
+                'FilterButton_active'
             );
             winner.trigger('click');
             await wrapper.vm.$nextTick();
             expect(winner.classes()).toContain(
-                'Filters__filter-option_selected'
+                'FilterButton_active'
             );
         });
     });
