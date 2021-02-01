@@ -2,10 +2,12 @@ import { mount, createLocalVue } from '@vue/test-utils';
 import Vuex from 'vuex';
 import { _store } from '../store/Store';
 import Filters from './Filters';
+import vueBem from '../mixins/vue-bem.vue';
 
 
 let localVue = createLocalVue();
 localVue.use(Vuex);
+localVue.mixin(vueBem);
 
 
 jest.mock('node-fetch');
@@ -20,7 +22,7 @@ describe('Filters.vue', () => {
 
         wrapper = mount(Filters, {
             localVue,
-            store
+            store,
         });
     });
 
