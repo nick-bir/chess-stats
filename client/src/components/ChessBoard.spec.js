@@ -1,9 +1,11 @@
 import { mount, createLocalVue } from '@vue/test-utils';
 import Vuex from 'vuex';
+import vueBem from '../mixins/vue-bem.vue';
 import { _store } from '../store/Store';
 import ChessBoard from './ChessBoard';
 let localVue = createLocalVue();
 localVue.use(Vuex);
+localVue.mixin(vueBem);
 
 describe('ChessBoard', () => {
     let wrapper, store;

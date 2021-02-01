@@ -42,8 +42,7 @@ describe('VueBem', () => {
                         size: 'xl'
                     });
                 }
-            },
-            
+            }
         };
 
         wrapper = mount(component, {
@@ -123,6 +122,28 @@ describe('VueBem', () => {
                 expect(elemClasses.myblock__myelem_block).toBe(undefined);
                 expect(elemClasses.myblock__myelem_elem).toBe(undefined);
             });
+        });
+    });
+
+    describe('$bemElem', () => {
+        let bemOptions;
+        beforeEach(() => {
+            bemOptions = {
+                block: 'myblock',
+                flat: true
+            };
+        });
+
+        it('applies elemName', () => {
+            expect(
+                vueBem.methods.$bemElem('myelem', bemOptions)
+            ).toMatchObject({ myblock__myelem: true });
+        });
+
+        it('applies mods from bemOptions', () => {
+            expect(
+                vueBem.methods.$bemElem('myelem', bemOptions)
+            ).toMatchObject({ myblock__myelem_flat: true });
         });
     });
 });

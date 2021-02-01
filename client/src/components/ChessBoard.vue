@@ -10,7 +10,7 @@
             .ChessBoard__row(v-for='(d, r) in "87654321"')
                 .ChessBoard__tile(
                     v-for='(l, c) in "abcdefgh"',
-                    :class='"ChessBoard__tile_side_" + ((r + c) % 2 ? "dark" : "light")'
+                    :class='`ChessBoard__tile_side_` + getTileSide(r, c)'
                 )
                     .ChessBoard__tile-content 
                         //- ChessFigure(:figure="getFigure(l, d)" v-if="getFigure(l, d)")
@@ -68,6 +68,10 @@ export default {
     },
 
     methods: {
+        getTileSide(r, c) {
+            return (r + c) % 2 ? "dark" : "light";
+        },
+
         getFigure(l, d) {
             let f = this.board[d - 1][l.charCodeAt(0) - 'a'.charCodeAt(0)];
             return f === ' ' ? '' : f;
@@ -119,7 +123,7 @@ responsive-square()
 
     &__letters, &__digits, &__tiles
         box-sizing: border-box
-    
+
     &__letters, &__digits
         color: gray
 
