@@ -28,6 +28,9 @@ export default {
 
             return bemClasses;
         },
+        $bemElem(elemName, bemOptions) {
+            return this.$bem({ ...bemOptions, elem: elemName });
+        },
     },
 };
 </script>
