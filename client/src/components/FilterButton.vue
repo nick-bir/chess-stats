@@ -1,5 +1,5 @@
 <template lang="pug">
-a.FilterButton(@click='$emit("click")', :class='classes')
+a.FilterButton(@click='$emit("click")', :class='$bem(mods)')
     slot
 </template>
 
@@ -8,10 +8,10 @@ export default {
     name: 'FilterButton',
     props: ['active', 'size'],
     computed: {
-        classes() {
+        mods() {
             return {
-                FilterButton_active: this.active,
-                ['FilterButton_size_' + this.size]: this.size,
+                active: this.active,
+                size: this.size,
             };
         },
     },
