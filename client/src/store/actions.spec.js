@@ -30,8 +30,6 @@ describe('Actions', () => {
             );
         });
 
-        return;
-
         it('saves response from api', async () => {
             await loadStats(store);
             expect(store.commit).toBeCalledWith('setStats', { a: 123 });
@@ -64,8 +62,6 @@ describe('Actions', () => {
         //     throw new Error('INMPLEMENT HERE');
         // });
     });
-
-    return;
 
     describe('toggleFilter', () => {
         it('commits toggleFilter', () => {

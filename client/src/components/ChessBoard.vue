@@ -13,7 +13,6 @@
                     :class='`ChessBoard__tile_side_` + getTileSide(r, c)'
                 )
                     .ChessBoard__tile-content 
-                        //- ChessFigure(:figure="getFigure(l, d)" v-if="getFigure(l, d)")
                         StatsTile(
                             :percentage='getPercentage(l, d)',
                             v-if='getPercentage(l, d)'

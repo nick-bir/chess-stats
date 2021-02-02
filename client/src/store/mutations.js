@@ -21,6 +21,10 @@ function toggleFilter(state, { filter, value }) {
     if (filter === 'winner.name') {
         filters.winner.name = value;
     } 
+
+    if (filter === 'normalizeData') {
+        filters.normalizeData = !filters.normalizeData;
+    } 
 }
 
 function resetFilter(state, { filter }) {
