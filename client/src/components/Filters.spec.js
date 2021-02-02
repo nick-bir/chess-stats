@@ -54,7 +54,7 @@ describe('Filters.vue', () => {
         });
     });
 
-    describe('Occupation time', () => {
+    describe('Winner side', () => {
         it('sets winner filter', async function() {
             wrapper.find('.Filters__filter_winner .FilterButton').trigger('click');
             expect(store.state.filters).toMatchObject({
@@ -72,6 +72,15 @@ describe('Filters.vue', () => {
             expect(winner.classes()).toContain(
                 'FilterButton_active'
             );
+        });
+    });
+
+    describe('Normalize data', () => {
+        it('turns on/off data normalization', async function() {
+            wrapper.find('.Filters__filter_normalize .FilterToggle').trigger('click');
+            expect(store.state.filters).toMatchObject({
+                normalizeData: true
+            });
         });
     });
 });

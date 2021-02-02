@@ -17,6 +17,13 @@ export default {
             }
         }
 
+        if (state.filters.normalizeData) {
+            const maxStat = Math.max(...Object.values(stats));
+            for (let figure of Object.keys(stats)) {
+                stats[figure] = stats[figure] / maxStat * 100;
+            }
+        }
+
         return stats;
     },
 

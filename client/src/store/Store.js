@@ -14,7 +14,8 @@ const _store = {
             winner: {
                 side: null,
                 name: null
-            }
+            },
+            normalizeData: false
         },
         dataRequestStarted: false
     }),

@@ -1,9 +1,9 @@
 <template lang="pug">
 .Filters
     .Filters__caption Filters:
-    fieldset.Filters__filter
-        legend.Filters__filter-container Occupation time:
-        .Filters__filter-options
+    fieldset.Filters__filter.Filter__filter_occupation
+        legend.Filters__filter-legend Occupation time:
+        .Filters__filter-container
             FilterButton(
                 v-for='f in "rnbqkp"',
                 :key='f',
@@ -13,7 +13,7 @@
             )
                 ChessFigure(:figure='f', size='30px')
 
-        .Filters__filter-options
+        .Filters__filter-container
             FilterButton(
                 v-for='f in "RNBQKP"',
                 :key='f',
@@ -22,11 +22,11 @@
                 @click.native='toggleFilter("figure", f)'
             )
                 ChessFigure(:figure='f', size='30px')
-        .Filters__filter-options
+        .Filters__filter-container
             a.Filters__filter-reset(@click='resetFilter("figure")') all
     fieldset.Filters__filter.Filters__filter_winner
-        legend.Filters__filter-container Winner:
-        .Filters__filter-options
+        legend.Filters__filter-legend Winner:
+        .Filters__filter-container
             FilterButton(
                 @click='toggleFilter("winner.side", "black")',
                 :active='filters.winner.side == "black"'
@@ -39,17 +39,28 @@
                 @click='toggleFilter("winner.side", "white")',
                 :active='filters.winner.side == "white"'
             ) White
+
+    fieldset.Filters__filter.Filters__filter_normalize
+        //- legend.Filters__filter-legend Normalize data
+        .Filters__filter-container
+            FilterToggle(
+                @click='toggleFilter("normalizeData")'
+                :active='filters.normalizeData'
+                ) Normalize data
+
 </template>
 
 <script>
 import { mapGetters } from 'vuex';
 import ChessFigure from './ChessFigure.vue';
 import FilterButton from './FilterButton.vue';
+import FilterToggle from './FilterToggle.vue';
 
 export default {
     methods: {
         // ...mapActions(['toggleFilter']),
         toggleFilter(filter, value) {
+            console.log('-----toggle filter',  filter);
             this.$store.dispatch('toggleFilter', { filter, value });
         },
 
@@ -69,6 +80,7 @@ export default {
     components: {
         ChessFigure,
         FilterButton,
+        FilterToggle,
     },
 };
 </script>
@@ -84,11 +96,12 @@ export default {
 
     &__filter
         margin-bottom: 5px
+        padding: 7px
         border: 2px solid #c0c0c070
         border-radius: 15px
         color: gray
 
-    &__filter-options
+    &__filter-controls
         display: block
         &:hover
             border-color: #ef72d0

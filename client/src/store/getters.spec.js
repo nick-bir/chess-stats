@@ -44,6 +44,13 @@ describe('Getters', () => {
             expect(filteredStats).toEqual({ a8: 0.35, c4: 0.46 });
         });
 
+        it('applies data normalization', () => {
+            state.filters.figure.add('s');
+            state.filters.normalizeData = true;
+            let filteredStats = getters.filteredStats(state);
+            expect(filteredStats).toEqual({ a8: 100, c4: 40 });
+        });
+
         it('no errors on empty stats', () => {
             state.stats = {};
             let filteredStats = getters.filteredStats(state);
