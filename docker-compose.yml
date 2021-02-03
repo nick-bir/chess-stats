@@ -25,9 +25,9 @@ services:
     # depends_on:
       # - api_server
     build: ./client
-    volumes: 
-      - "./client:/chess-stats-client" # for HMR
-      - "/chess-stats-client/node_modules" # save container node_modules visibility
+    # volumes: 
+    #   - "./client:/chess-stats-client" # for HMR
+      # - "/chess-stats-client/node_modules" # save container node_modules visibility
     ports:
       - 8082:8082 # HMR seems to be not working when ports are not same
   
