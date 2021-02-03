@@ -16,7 +16,7 @@ export default {
 
     mounted() {
         // this.$nextTick doesn't turn animation
-        setTimeout(()=>this.size = this.roundPerc + '%');
+        setTimeout(()=>this.size = this.roundPerc * 0.9 + '%');
     },
 
     computed: {

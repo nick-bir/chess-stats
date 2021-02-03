@@ -36,6 +36,8 @@ export default {
         border-color: #7e7f8c
         box-shadow: none
         color: white
+        &:hover
+            background-color: #7382a4
 
     &_size
         &_square-m
