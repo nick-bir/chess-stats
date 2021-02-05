@@ -29,6 +29,12 @@ async function loadStats({ commit, state }) {
     commit('setStats', res);
 }
 
+async function loadPlayers({ commit }) {
+    let url = new URL('http://localhost:8081/api/v1/players');
+    const res = await (await fetch(url.toString())).json();
+    commit('setPlayers', res);
+}
+
 function toggleFilter({ commit, dispatch }, { filter, value }) {
     commit('toggleFilter', { filter, value });
 
@@ -43,6 +49,7 @@ function resetFilter({ commit }, { filter }) {
 
 export default {
     loadStats,
+    loadPlayers,
     toggleFilter,
     resetFilter
 };

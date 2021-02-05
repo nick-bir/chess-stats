@@ -5,14 +5,15 @@
 </template>
 
 <script>
-import {store} from "./store/Store.js";
-import MainLayout from "./components/MainLayout.vue";
+import { store } from './store/Store.js';
+import MainLayout from './components/MainLayout.vue';
 
 export default {
-    name: "App",
+    name: 'App',
     store,
     mounted() {
-        this.$store.dispatch('loadStats')
+        this.$store.dispatch('loadStats');
+        this.$store.dispatch('loadPlayers');
     },
     components: {
         MainLayout,

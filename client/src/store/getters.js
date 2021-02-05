@@ -33,6 +33,11 @@ export default {
 
     dataRequestStarted(state) {
         return state.dataRequestStarted
+    },
+
+    players(state) {
+        return (state.players || [])
+            .map(p => p[0]);
     }
 
 };

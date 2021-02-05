@@ -25,4 +25,8 @@ describe("App.vue", () => {
     it("loads stats from api server when created", () => {
         expect(store.dispatch).toBeCalledWith('loadStats');
     });
+
+    it("loads players list from api server when created", () => {
+        expect(store.dispatch).toBeCalledWith('loadPlayers');
+    });
 });

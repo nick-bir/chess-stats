@@ -17,7 +17,8 @@ const _store = {
             },
             normalizeData: false
         },
-        dataRequestStarted: false
+        dataRequestStarted: false,
+        players: null
     }),
     getters,
     mutations,

@@ -21,7 +21,8 @@ describe('Getters', () => {
             },
             filters: {
                 figure: new Set()
-            }
+            },
+            players: [['a', 123], ['b', 456]]
         };
     });
 
@@ -55,6 +56,13 @@ describe('Getters', () => {
             state.stats = {};
             let filteredStats = getters.filteredStats(state);
             expect(filteredStats).toEqual({});
+        });
+    });
+
+    describe('players', () => {
+        it('returns 1d players array', () => {
+            let players = getters.players(state);
+            expect(players).toEqual(['a', 'b']);
         });
     });
 });

@@ -12,19 +12,19 @@ function toggleFilter(state, { filter, value }) {
         if (filters.figure.has(value)) filters.figure.delete(value);
         else state.filters.figure.add(value);
         filters.figure = new Set(filters.figure);
-    } 
-    
+    }
+
     if (filter === 'winner.side') {
         filters.winner.side = value;
-    } 
+    }
 
     if (filter === 'winner.name') {
         filters.winner.name = value;
-    } 
+    }
 
     if (filter === 'normalizeData') {
         filters.normalizeData = !filters.normalizeData;
-    } 
+    }
 }
 
 function resetFilter(state, { filter }) {
@@ -39,7 +39,7 @@ function resetFilter(state, { filter }) {
     if (filter === 'winner.name') {
         state.filters.winner.name = null;
     }
- }
+}
 
 function dataRequestStarted(state) {
     state.dataRequestStarted = true;
@@ -49,10 +49,15 @@ function dataRequestFinished(state) {
     state.dataRequestStarted = false;
 }
 
+function setPlayers(state, players) {
+    state.players = players;
+}
+
 export default {
     setStats,
     toggleFilter,
     resetFilter,
     dataRequestStarted,
-    dataRequestFinished
+    dataRequestFinished,
+    setPlayers
 };

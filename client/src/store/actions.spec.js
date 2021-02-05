@@ -4,10 +4,9 @@ jest.mock('node-fetch');
 
 describe('Actions', () => {
     let store, fetch;
-    let { loadStats, toggleFilter, resetFilter } = actions;
+    let { loadStats, loadPlayers, toggleFilter, resetFilter } = actions;
 
     beforeEach(async () => {
-        
         store = {
             dispatch: jest.fn(),
             commit: jest.fn(),
@@ -53,7 +52,7 @@ describe('Actions', () => {
             store.state.filters = { winner: { side: 'black' } };
             await loadStats(store);
             expect(decodeURIComponent(fetch.mock.calls[0][0])).toBe(
-                "http://localhost:8081/api/v1/games/stats?filter=(result=1)"
+                'http://localhost:8081/api/v1/games/stats?filter=(result=1)'
             );
         });
 
@@ -61,6 +60,16 @@ describe('Actions', () => {
         //     store.state.filters = { winner: {side: 'black'} };
         //     throw new Error('INMPLEMENT HERE');
         // });
+    });
+
+    describe('loadPlayers', () => {
+        it('loads players list', async () => {
+            await loadPlayers(store);
+            expect(decodeURIComponent(fetch.mock.calls[0][0])).toBe(
+                'http://localhost:8081/api/v1/players'
+            );
+            expect(store.commit).toBeCalledWith('setPlayers', { a: 123 });
+        });
     });
 
     describe('toggleFilter', () => {
@@ -71,7 +80,10 @@ describe('Actions', () => {
             });
         });
         it('dispatch loadStats on winner.side filter change', async () => {
-            await toggleFilter(store, { filter: 'winner.side', value: 'white' });
+            await toggleFilter(store, {
+                filter: 'winner.side',
+                value: 'white'
+            });
             expect(store.dispatch).toBeCalledWith('loadStats');
         });
     });
