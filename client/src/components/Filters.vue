@@ -26,7 +26,7 @@
             a.Filters__filter-reset(@click='resetFilter("figure")') all
     fieldset.Filters__filter.Filters__filter_winner
         legend.Filters__filter-legend Winner:
-        .Filters__filter-container
+        .Filters__filter-container.Filters__not-implemented
             FilterButton(
                 @click='toggleFilter("winner.side", "black")',
                 :active='filters.winner.side == "black"'
@@ -119,4 +119,22 @@ export default {
 
         &:hover
             color: black
+
+    &__not-implemented
+        position: relative
+        // opacity: .7
+        &:after
+            position: absolute
+            align-items: top
+            justify-content: center
+            top: -1em
+            left: 0
+            right: 0
+            bottom: 0
+            padding-right: .3em
+            background-color: rgba(255, 255, 255, .5)
+            content: 'under construction'
+            font-size: .8em
+            text-align: right
+
 </style>
