@@ -15,6 +15,10 @@ class Config(
     private val log = LoggerFactory.getLogger(this.javaClass)
 
     override fun afterPropertiesSet() {
+        initDb()
+    }
+
+    private fun initDb() {
         if (gameRepository.count() > 0) {
             log.info("DB initialization skipped")
             return
