@@ -1,12 +1,13 @@
 package com.example.chessstats.parser
 
-import com.example.chessstats.model.domain.Game
+import org.slf4j.LoggerFactory
 import java.io.BufferedReader
 import java.io.InputStream
 import java.io.InputStreamReader
-import java.lang.StringBuilder
 
 object Parser {
+    private val logger = LoggerFactory.getLogger(javaClass)
+
     private val moveRegex = Regex("\\d+\\.\\s*")
     private fun parseLine(line: String): List<Move> {
         return line.split(moveRegex).flatMap {
@@ -65,15 +66,8 @@ object Parser {
             try {
                 move.updateState(newState)
             } catch (e: Exception) {
-                println("Failed to parse:")
-                println("move: $move")
-                println("states:")
-                states.forEachIndexed { index, it ->
-                    println("Half-move $index")
-                    println(it)
-                    println()
-                }
-                println(pgn)
+                logger.error("Failed to parse:")
+                logger.error("move: $move")
                 return null
             }
             currentState = newState
