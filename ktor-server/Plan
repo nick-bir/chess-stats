@@ -1,0 +1,26 @@
+[✓] 0. Setup working environment.
+est: 1h
+
+1. PGN parser skeleton
+	[✓] a. Regexp to parse all moves
+	[✓] b. Parse tags, separate games etc
+est: 2-4h
+
+2. filter and chunk pgn.
+	[✓] a. No garbage games
+	[✓] b. rating 2000+
+	[✓] c. >10 moves
+	[✓] d. Time Control >300+0
+est: 4-8h
+
+3. Design and build data model
+est: 8h
+
+4. Design Parser Models
+est: 2-4h
+
+5. PGN parser implementation
+est: 4-8h
+
+6. API
+est: 2-4h
