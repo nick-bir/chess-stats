@@ -10,7 +10,10 @@ enum class ParserState {
     INVALID
 }
 
-object Parser {
+/**
+ * This Parser is used to filter rubbish and normalize pgn
+ */
+object RoughParser {
     val moveRegexps = listOf<Regex>(
         Regex("[abcdefgh][234567]#?"), // regular pawn move
         Regex("[abcdefgh][18]=[RNBQ]#?"), // promotion pawn move
